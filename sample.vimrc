@@ -77,21 +77,61 @@ set wildmode=list:longest
 " Wildmenu will ignore files with these extensions.
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
+" Uncomment if for some weird reason your vim does not wrap text around the screen
+set wrap
 " This is a setting to prettily display invisible characters in your file
 " To use type set list in command mode.
 " Note that I have also added a mapping for the following to <F5> see mappings
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<,space:␣
+
+"" This will enable automatic running of :RustFmt when you save a buffer
+let g:rustfmt_autosave = 1
 
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
+
+"" These are tutorials for handling folds in vim in normal mode
+"" zo opens a fold underneath the cursor.
+"" zO opens all folds underneath the cursor, recursively
+"" zc closes a fold underneath the cursor
+"" zC closes all folds underneath the cursor, recursively
+"" za toggles a fold under the cursor 
+"" zM closes all folds in the buffer
+"" zR opens all folds in the buffer
+"" zm closes a level of fold in the buffer
+"" zr opens a level of fold in the buffer
+
+"" While there are a couple of ways of creating folds in vim,
+"" I prefer the following outlined procedure
+"" 1. Enter Visual Mode
+"" 2. Highlight the block to be folded
+"" 3. Press zf.
+
+
 " PLUGINS ---------------------------------------------------------------- {{{
 
 " Plugin code goes here.
+" Please note that we are using the vim-plug as the plug-in
+" manager
+" To update the installed plug-ins we use 
+" `:PlugUpdate` in the command mode.
+" To update specific plug-ins we can use the following:
+" `:PlugUpdate plugin0 plugin1
+
+call plug#begin()
+
+Plug 'rust-lang/rust.vim'
+
+call plug#end()
 
 " }}}
+
+"" These lines were put in relation to installing rust.vim
+syntax enable
+filetype plugin indent on
 
 
 " MAPPINGS --------------------------------------------------------------- {{{
