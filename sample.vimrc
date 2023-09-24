@@ -92,7 +92,23 @@ let g:rustfmt_autosave = 1
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
+" Windows Specific ---------------------------------------------------------------- {{{
+" Windows behaves weirdly with the default settings off when using custom vimrc
+" Such as automatically inserting a line break on text width at 78
+" Or that ugly cursor line highlight uncomment the following lines to fix
 
+"" This fixes the backspace not working issue
+set backspace =indent,eol,start
+
+"" This will stop vim from autowrapping on tw=78 doesn't work yet
+set formatoptions-=tc
+
+"" This will remove the highlight on the cursorline
+set nocursorline
+" }}}
+
+
+"" This will remove the annoying red highlighting on the cursorline
 "" These are tutorials for handling folds in vim in normal mode
 "" zo opens a fold underneath the cursor.
 "" zO opens all folds underneath the cursor, recursively
@@ -110,7 +126,8 @@ endif
 "" 2. Highlight the block to be folded
 "" 3. Press zf.
 
-
+"" Automatically displays all buffers when there's only one tab open using vim-airline plugin.
+let g:airline#extensions#tabline#enabled = 1
 " PLUGINS ---------------------------------------------------------------- {{{
 
 " Plugin code goes here.
@@ -124,6 +141,8 @@ endif
 call plug#begin()
 
 Plug 'rust-lang/rust.vim'
+Plug 'preservim/nerdtree'
+Plug 'vim-airline/vim-airline'
 
 call plug#end()
 
@@ -132,8 +151,6 @@ call plug#end()
 "" These lines were put in relation to installing rust.vim
 syntax enable
 filetype plugin indent on
-
-
 " MAPPINGS --------------------------------------------------------------- {{{
 
 " Mappings code goes here.
@@ -141,6 +158,10 @@ noremap <F5> :set list!<CR>
 inoremap <F5> <C-o>:set list!<CR>
 cnoremap <F5> <C-c>:set list!<CR>
 
+"" The following mappings are in relation to nerdtree each will be  explained
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
 " }}}
 
 
