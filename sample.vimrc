@@ -1,3 +1,22 @@
+" Tutorials{{{
+" zo opens a fold underneath the cursor.
+" zO opens all folds underneath the cursor, recursively
+" zc closes a fold underneath the cursor
+" zC closes all folds underneath the cursor, recursively
+" za toggles a fold under the cursor 
+" zM closes all folds in the buffer
+" zR opens all folds in the buffer
+" zm closes a level of fold in the buffer
+" zr opens a level of fold in the buffer
+
+" While there are a couple of ways of creating folds in vim,
+" I prefer the following outlined procedure
+" 1. Enter Visual Mode
+" 2. Highlight the block to be folded
+" 3. Press zf.}}}
+
+
+" Basic configurations{{{
 " Disable compatibility with vi which can cause unexpected issues.
 set nocompatible
 
@@ -91,7 +110,9 @@ let g:rustfmt_autosave = 1
 " reopening a file
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-endif
+endif"}}}
+
+
 " Windows Specific ---------------------------------------------------------------- {{{
 " Windows behaves weirdly with the default settings off when using custom vimrc
 " Such as automatically inserting a line break on text width at 78
@@ -108,26 +129,6 @@ set nocursorline
 " }}}
 
 
-"" This will remove the annoying red highlighting on the cursorline
-"" These are tutorials for handling folds in vim in normal mode
-"" zo opens a fold underneath the cursor.
-"" zO opens all folds underneath the cursor, recursively
-"" zc closes a fold underneath the cursor
-"" zC closes all folds underneath the cursor, recursively
-"" za toggles a fold under the cursor 
-"" zM closes all folds in the buffer
-"" zR opens all folds in the buffer
-"" zm closes a level of fold in the buffer
-"" zr opens a level of fold in the buffer
-
-"" While there are a couple of ways of creating folds in vim,
-"" I prefer the following outlined procedure
-"" 1. Enter Visual Mode
-"" 2. Highlight the block to be folded
-"" 3. Press zf.
-
-"" Automatically displays all buffers when there's only one tab open using vim-airline plugin.
-let g:airline#extensions#tabline#enabled = 1
 " PLUGINS ---------------------------------------------------------------- {{{
 
 " Plugin code goes here.
@@ -146,11 +147,16 @@ Plug 'vim-airline/vim-airline'
 
 call plug#end()
 
-" }}}
+"" Automatically displays all buffers when there's only one tab open using vim-airline plugin.
+let g:airline#extensions#tabline#enabled = 1
 
 "" These lines were put in relation to installing rust.vim
 syntax enable
 filetype plugin indent on
+
+" }}}
+
+
 " MAPPINGS --------------------------------------------------------------- {{{
 
 " Mappings code goes here.
@@ -268,3 +274,20 @@ set laststatus=2
 
 " }}}
 
+
+" Undofile ---------------------------------------------------------------- {{{
+" To better get this small script refer to
+" https://vi.stackexchange.com/questions/6/how-can-i-use-the-undofile
+" Please don't forget to add the cronjob for the cleanup
+" Let's save undo info!
+
+if !isdirectory($HOME."/.vim")
+    call mkdir($HOME."/.vim", "", 0770)
+endif
+if !isdirectory($HOME."/.vim/undo-dir")
+    call mkdir($HOME."/.vim/undo-dir", "", 0700)
+endif
+
+set undodir=~/.vim/undo-dir
+set undofile
+" }}}
