@@ -271,4 +271,11 @@ endif
 
 set undodir=~/.vim/undo-dir
 set undofile
+
+" To add the cronjob execute the following
+" $ crontab -e
+"
+" Then in the editor add the following line
+" # m h  dom mon dow   command
+" 43 00 *   *   3     find /path/to/.vim/undo-dir -type f -mtime +90 -delete
 " }}}
