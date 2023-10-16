@@ -177,6 +177,7 @@ inoremap <F5> <C-o>:set list!<CR>
 cnoremap <F5> <C-c>:set list!<CR>
 
 "" The following mappings are in relation to nerdtree each will be  explained
+nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
@@ -191,8 +192,6 @@ augroup filetype_vim
     autocmd!
     autocmd FileType vim setlocal foldmethod=marker
 augroup END
-
-" More Vimscripts code goes here.
 
 " Enable the marker method of folding.
 augroup filetype_vim
@@ -248,6 +247,10 @@ if has('gui_running')
         \else<Bar>
         \set guioptions+=mTr<Bar>
         \endif<CR>
+
+" Start NERDTree when Vim is started without file arguments.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
 
 endif
 
