@@ -1,9 +1,21 @@
 " Tutorials{{{
+"
+" VIM-PLUG GUIDELINES
+" Please note that for everything to work hunky dorry you must install
+" vim-plug.
+" Follow this link to get the guideline https://github.com/junegunn/vim-plug
+" Or if you are able to curl from the terminal paste these two lines in your terminal
+" (please remove the '"' characters before you do this
+"
+" curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+"     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"
+" FOLDS TUTORIAL
 " zo opens a fold underneath the cursor.
 " zO opens all folds underneath the cursor, recursively
 " zc closes a fold underneath the cursor
 " zC closes all folds underneath the cursor, recursively
-" za toggles a fold under the cursor 
+" za toggles a fold under the cursor
 " zM closes all folds in the buffer
 " zR opens all folds in the buffer
 " zm closes a level of fold in the buffer
