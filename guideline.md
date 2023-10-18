@@ -27,4 +27,4 @@ Afterwards to load your custom virc file do the following
 cp sample.vimrc ~/.vimrc
 
 ### Windows
-I've actually forgot will update in future
+Google is your friend, I don't use this and won't.
