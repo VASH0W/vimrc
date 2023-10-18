@@ -160,7 +160,7 @@ let g:airline#extensions#tabline#enabled = 1
 
 " The following line sets the vim-airline theme to be used for a full site
 " with screenshots go to https://github.com/vim-airline/vim-airline/wiki/Screenshots
-let g:airline_theme='papercolor'
+let g:airline_theme='minimalist'
 
 "" rust.vim
 syntax enable
