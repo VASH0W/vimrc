@@ -158,12 +158,18 @@ Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'arcticicestudio/nord-vim'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
 "" vim-airline
 " Automatically displays all buffers when there's only one tab open using vim-airline plugin.
 let g:airline#extensions#tabline#enabled = 1
+
+" The following line sets the vim-airline theme to be used for a full site
+" with screenshots go to https://github.com/vim-airline/vim-airline/wiki/Screenshots
+let g:airline_theme='papercolor'
+
 
 "" rust.vim
 syntax enable
