@@ -70,9 +70,6 @@ set nobackup
 " Do not let cursor scroll below or above N number of lines when scrolling.
 set scrolloff=10
 
-" Do not wrap lines. Allow long lines to extend as far as the line goes.
-set nowrap
-
 " While searching though a file incrementally highlight matching characters as you type.
 set incsearch
 
@@ -87,7 +84,7 @@ set smartcase
 set showcmd
 
 " Show the mode you are on the last line.
-set showmode
+" set showmode
 
 " Show matching words during a search.
 set showmatch
@@ -108,15 +105,14 @@ set wildmode=list:longest
 " Wildmenu will ignore files with these extensions.
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
-" Uncomment if for some weird reason your vim does not wrap text around the screen
+" Allows the lines to wrap if gets to end of screen
 set wrap
+
 " This is a setting to prettily display invisible characters in your file
 " To use type set list in command mode.
 " Note that I have also added a mapping for the following to <F5> see mappings
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<,space:␣
 
-"" This will enable automatic running of :RustFmt when you save a buffer
-let g:rustfmt_autosave = 1
 
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
@@ -127,14 +123,10 @@ endif"}}}
 
 " Windows Specific ---------------------------------------------------------------- {{{
 " Windows behaves weirdly with the default settings off when using custom vimrc
-" Such as automatically inserting a line break on text width at 78
 " Or that ugly cursor line highlight uncomment the following lines to fix
 
 "" This fixes the backspace not working issue
 set backspace =indent,eol,start
-
-"" This will stop vim from autowrapping on tw=78 doesn't work yet
-set formatoptions-=tc
 
 "" This will remove the highlight on the cursorline
 set nocursorline
@@ -170,10 +162,12 @@ let g:airline#extensions#tabline#enabled = 1
 " with screenshots go to https://github.com/vim-airline/vim-airline/wiki/Screenshots
 let g:airline_theme='papercolor'
 
-
 "" rust.vim
 syntax enable
 filetype plugin indent on
+
+" This will enable automatic running of :RustFmt when you save a buffer
+let g:rustfmt_autosave = 1
 
 " To activate nord color-scheme
 colorscheme nord
