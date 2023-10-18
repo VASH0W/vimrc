@@ -156,15 +156,21 @@ call plug#begin()
 Plug 'rust-lang/rust.vim'
 Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
+Plug 'arcticicestudio/nord-vim'
+Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 
-"" Automatically displays all buffers when there's only one tab open using vim-airline plugin.
+"" vim-airline
+" Automatically displays all buffers when there's only one tab open using vim-airline plugin.
 let g:airline#extensions#tabline#enabled = 1
 
-"" These lines were put in relation to installing rust.vim
+"" rust.vim
 syntax enable
 filetype plugin indent on
+
+" To activate nord color-scheme
+colorscheme nord
 
 " }}}
 
