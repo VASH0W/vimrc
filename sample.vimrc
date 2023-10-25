@@ -148,9 +148,9 @@ call plug#begin()
 Plug 'rust-lang/rust.vim'
 Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
-Plug 'arcticicestudio/nord-vim'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
+Plug 'dracula/vim'
 
 call plug#end()
 
@@ -160,7 +160,7 @@ let g:airline#extensions#tabline#enabled = 1
 
 " The following line sets the vim-airline theme to be used for a full site
 " with screenshots go to https://github.com/vim-airline/vim-airline/wiki/Screenshots
-let g:airline_theme='minimalist'
+let g:airline_theme='base16_nord'
 
 "" rust.vim
 syntax enable
@@ -169,8 +169,8 @@ filetype plugin indent on
 " This will enable automatic running of :RustFmt when you save a buffer
 let g:rustfmt_autosave = 1
 
-" To activate nord color-scheme
-colorscheme nord
+" To set the color-scheme
+colorscheme dracula
 
 " }}}
 
@@ -178,15 +178,29 @@ colorscheme nord
 " MAPPINGS --------------------------------------------------------------- {{{
 
 " Mappings code goes here.
+
+" The mappings visualizes whitespaces
 noremap <F5> :set list!<CR>
 inoremap <F5> <C-o>:set list!<CR>
 cnoremap <F5> <C-c>:set list!<CR>
 
-"" The following mappings are in relation to nerdtree each will be  explained
+" The mapping below runs clang-format on the file in buffer
+if has('python')
+    map <leader>c :pyf /usr/share/clang/clang-format-14/clang-format.py<CR>
+elseif has('python3')
+    map <leader>c :py3f /usr/share/clang/clang-format-14/clang-format.py<CR>
+endif
+
+" The following mappings are in relation to nerdtree each will be  explained
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
+
+" The following mappings are useful when navigating wrapped lines
+nnoremap k gk
+nnoremap j gj
+
 " }}}
 
 
