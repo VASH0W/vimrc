@@ -25,7 +25,22 @@
 " I prefer the following outlined procedure
 " 1. Enter Visual Mode
 " 2. Highlight the block to be folded
-" 3. Press zf.}}}
+" 3. Press zf."
+" File Management
+" 
+" From within Vim, new files are created like existing files are edited, via
+" commands like `:edit filename` or `:split filename`. To persist them to the
+" disk, you need to (optionally type in contents and) persist them via `:write`.
+"
+" The following lines create a new file named `filename` in the same directory
+" as the currently opened file
+" 
+" :e filename
+" :w
+" Please visit
+" https://stackoverflow.com/questions/13239464/create-a-new-file-in-the-directory-of-the-open-file-in-vim
+" for the full tutorial.
+"}}}
 
 
 " Basic configurations{{{
@@ -118,7 +133,12 @@ set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<,space:␣
 " reopening a file
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-endif"}}}
+endif
+
+" The line below makes vim always change to the current file's directory when
+" creating a new file (see File Management tutorial)
+set autochdir
+"}}}
 
 
 " Windows Specific ---------------------------------------------------------------- {{{
